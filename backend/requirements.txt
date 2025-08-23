@@ -1,3 +1,6 @@
+ruff
+black
+isort
 fastapi
 uvicorn
 boto3
