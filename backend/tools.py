@@ -1,6 +1,6 @@
 # tools.py — Bedrock client helper
 import boto3
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
+from config import AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY
 
 
 def get_bedrock_client():

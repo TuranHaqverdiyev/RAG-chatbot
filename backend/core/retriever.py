@@ -1,6 +1,7 @@
 ## Standard RAG: Bedrock Knowledge Base Retrieval (Matches instructor's notebook)
 import boto3
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, BEDROCK_KB_ID
+from config import (AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY,
+                    BEDROCK_KB_ID)
 
 
 def retrieve_context(query: str, top_k: int = 3) -> str:

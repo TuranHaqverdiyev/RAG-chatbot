@@ -1,9 +1,9 @@
-from fastapi.responses import StreamingResponse
-from core.llm import stream_bedrock_llm
-
 # --- Streaming Generate endpoint ---
 # (Moved to end of file after all imports, app, and schema definitions)
 import re
+
+from core.llm import stream_bedrock_llm
+from fastapi.responses import StreamingResponse
 
 # --- System prompt for Claude ---
 SYSTEM_PROMPT = (
@@ -26,14 +26,14 @@ def is_malicious_prompt(prompt: str) -> bool:
     return any(re.search(pat, prompt, re.IGNORECASE) for pat in patterns)
 
 
+from typing import Optional  # noqa: E402
+
+from core.llm import call_bedrock_llm  # noqa: E402
+from core.retriever import retrieve_context  # noqa: E402
 # main.py — FastAPI backend skeleton
 from fastapi import FastAPI  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from pydantic import BaseModel  # noqa: E402
-from typing import Optional  # noqa: E402
-from core.llm import call_bedrock_llm  # noqa: E402
-from core.retriever import retrieve_context  # noqa: E402
-
 
 app = FastAPI(
     title="FastAPI Backend server for ML project",

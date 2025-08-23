@@ -1,9 +1,11 @@
 # llm.py — Bedrock LLM interface
 
-from typing import Optional
-from tools import get_bedrock_client
-from ..config import BEDROCK_MODEL_ID
 import json
+from typing import Optional
+
+from tools import get_bedrock_client
+
+from ..config import BEDROCK_MODEL_ID
 
 
 def stream_bedrock_llm(

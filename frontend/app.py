@@ -1,12 +1,13 @@
 # -------------------------
 # Imports
 # -------------------------
-import streamlit as st
-import requests
-import re
 import html
-from typing import Tuple
+import re
 from datetime import datetime
+from typing import Tuple
+
+import requests
+import streamlit as st
 
 
 # -------------------------
