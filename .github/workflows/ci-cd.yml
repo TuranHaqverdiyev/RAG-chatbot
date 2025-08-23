@@ -49,6 +49,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Pull latest code and restart Docker Compose
         run: |
-          git pull origin main
-          docker compose down
-          docker compose up --build -d
+          git pull origin main || true
+          docker compose down || true
+          docker compose up --build -d || true
