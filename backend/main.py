@@ -24,12 +24,12 @@ def is_malicious_prompt(prompt: str) -> bool:
 	return any(re.search(pat, prompt, re.IGNORECASE) for pat in patterns)
 
 # main.py — FastAPI backend skeleton
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Optional
-from core.llm import call_bedrock_llm
-from core.retriever import retrieve_context
+from fastapi import FastAPI  # noqa: E402
+from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
+from pydantic import BaseModel  # noqa: E402
+from typing import Optional  # noqa: E402
+from core.llm import call_bedrock_llm  # noqa: E402
+from core.retriever import retrieve_context  # noqa: E402
 
 
 app = FastAPI(title="FastAPI Backend server for ML project", version="1.0.0", description="REST API for ML project")
