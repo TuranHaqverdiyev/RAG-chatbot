@@ -24,7 +24,7 @@ jobs:
           pip install ruff black isort
 
       - name: Run ruff
-        run: ruff backend frontend
+        run: ruff check backend frontend
 
       - name: Run black (check only)
         run: black --check backend frontend
