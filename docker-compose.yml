@@ -1,1 +1,20 @@
-<file>
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    networks:
+      - ragnet
+    env_file:
+      - .env
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    networks:
+      - ragnet
+    depends_on:
+      - backend
+networks:
+  ragnet:
+    driver: bridge

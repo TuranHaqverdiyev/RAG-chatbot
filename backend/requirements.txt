@@ -1,1 +1,4 @@
-<file>
+fastapi
+uvicorn
+boto3
+chromadb
