@@ -8,6 +8,7 @@ import html
 from typing import Tuple
 from datetime import datetime
 
+
 # -------------------------
 # Utility stubs for missing functions
 # -------------------------
@@ -18,9 +19,12 @@ def truncated_label(text: str, ts: str, max_len: int = 20) -> str:
         label += f" ({ts})"
     return label
 
+
 def now_time() -> str:
     """Return current time as HH:MM string."""
     return datetime.now().strftime("%H:%M")
+
+
 # Config & light styling
 # -------------------------
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖")
@@ -40,6 +44,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 # -------------------------
 # Helpers
@@ -95,8 +100,10 @@ st.title("")  # Remove main title, will show welcome message below
 # Search input bound to session_state
 st.sidebar.text_input("Search chats", key="search_term")
 
+
 def clear_search() -> None:
     st.session_state.search_term = ""
+
 
 st.sidebar.button("Clear search", on_click=clear_search)
 
@@ -140,7 +147,10 @@ for i, chat in filtered:
         # If deleted current chat, reset selection
         if st.session_state.current_chat == i:
             st.session_state.current_chat = None
-        elif st.session_state.current_chat is not None and st.session_state.current_chat > i:
+        elif (
+            st.session_state.current_chat is not None
+            and st.session_state.current_chat > i
+        ):
             st.session_state.current_chat -= 1
         st.rerun()
 
@@ -149,11 +159,15 @@ for i, chat in filtered:
 # -------------------------
 
 # Main area: welcome message if no chat selected, else show chat
-if st.session_state.current_chat is not None and 0 <= st.session_state.current_chat < len(st.session_state.chats):
+if (
+    st.session_state.current_chat is not None
+    and 0 <= st.session_state.current_chat < len(st.session_state.chats)
+):
     current_history = st.session_state.chats[st.session_state.current_chat]
 else:
     current_history = []
-    st.markdown("""
+    st.markdown(
+        """
         # Welcome to Azercell Chatbot
         You can ask questions about:
         - Code of Conduct and Business Ethics
@@ -166,7 +180,8 @@ else:
         - Reporting concerns and Ethics Ambassadors
         
         _Please ask only about Azercell's official policies and compliance topics._
-    """)
+    """
+    )
 
 # Render messages. If there's a search term, highlight matches in every message.
 for msg in current_history:
@@ -200,13 +215,13 @@ if prompt is not None and prompt != "":
     with st.chat_message("assistant"):
         placeholder = st.empty()
         received = ""
-        with st.spinner('Thinking...'):
+        with st.spinner("Thinking..."):
             try:
                 resp = requests.post(
                     "http://backend:8000/generate/stream",
                     json={"prompt": prompt, "modelName": ""},
                     stream=True,
-                    timeout=60
+                    timeout=60,
                 )
                 resp.raise_for_status()
                 received = ""
@@ -215,11 +230,16 @@ if prompt is not None and prompt != "":
                         continue
                     piece = chunk.decode(errors="ignore")
                     received += piece
-                    placeholder.markdown(html.escape(received).replace("\n", "<br/>"), unsafe_allow_html=True)
+                    placeholder.markdown(
+                        html.escape(received).replace("\n", "<br/>"),
+                        unsafe_allow_html=True,
+                    )
             except requests.RequestException as exc:
                 err = f"Error contacting backend: {exc}"
                 placeholder.markdown(f"**{html.escape(err)}**")
                 received = err
             finally:
                 # store assistant message
-                current_history.append({"role": "assistant", "content": received, "time": now_time()})
+                current_history.append(
+                    {"role": "assistant", "content": received, "time": now_time()}
+                )
