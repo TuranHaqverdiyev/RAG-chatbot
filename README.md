@@ -39,6 +39,17 @@ This project is a Retrieval-Augmented Generation (RAG) AI chatbot using Amazon B
 └── README.md            # Project documentation
 ```
 
+
+## Live Demo (EC2)
+
+You can access the deployed chatbot here:
+
+- **Frontend (Streamlit):** [http://100.27.159.226:8501/](http://100.27.159.226:8501/)
+- **Backend (FastAPI):** [http://100.27.159.226:8000](http://100.27.159.226:8000)
+- **API Docs (Swagger):** [http://100.27.159.226:8000/docs](http://100.27.159.226:8000/docs)
+
+---
+
 ## Setup Instructions
 
 ### 1. Clone the Repository
