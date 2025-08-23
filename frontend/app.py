@@ -1,4 +1,14 @@
 # -------------------------
+# Imports
+# -------------------------
+import streamlit as st
+import requests
+import re
+import html
+from typing import Tuple
+from datetime import datetime
+
+# -------------------------
 # Utility stubs for missing functions
 # -------------------------
 def truncated_label(text: str, ts: str, max_len: int = 20) -> str:
@@ -10,17 +20,7 @@ def truncated_label(text: str, ts: str, max_len: int = 20) -> str:
 
 def now_time() -> str:
     """Return current time as HH:MM string."""
-    from datetime import datetime
     return datetime.now().strftime("%H:%M")
-import streamlit as st
-import requests
-
-import streamlit as st
-import requests
-import re
-import html
-from typing import Tuple
-from datetime import datetime
 # Config & light styling
 # -------------------------
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖")

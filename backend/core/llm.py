@@ -19,7 +19,7 @@ def stream_bedrock_llm(prompt: str, model_id: str = "", system_prompt: Optional[
 			"messages": [
 				{"role": "user", "content": prompt}
 			],
-			"max_tokens": 512,
+			"max_tokens": 64128,
 			"anthropic_version": "bedrock-2023-05-31"
 		}
 		if system_prompt:
