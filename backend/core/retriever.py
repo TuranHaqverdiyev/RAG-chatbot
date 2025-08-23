@@ -30,5 +30,5 @@ def retrieve_context(query: str, top_k: int = 3) -> str:
 			for ind, i in enumerate(candidates)
 		])
 		return vec_response
-	except Exception as e:
+	except Exception:
 		return ""

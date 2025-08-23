@@ -14,12 +14,13 @@ def now_time() -> str:
     return datetime.now().strftime("%H:%M")
 import streamlit as st
 import requests
-from datetime import datetime
+
+import streamlit as st
+import requests
 import re
 import html
-from typing import Tuple, Optional
-
-# -------------------------
+from typing import Tuple
+from datetime import datetime
 # Config & light styling
 # -------------------------
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖")

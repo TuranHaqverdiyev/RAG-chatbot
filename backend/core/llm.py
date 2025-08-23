@@ -1,10 +1,19 @@
-def stream_bedrock_llm(prompt: str, model_id: str = "", system_prompt: str = None):
+
+# llm.py — Bedrock LLM interface
+
+from typing import Optional
+from tools import get_bedrock_client
+from ..config import BEDROCK_MODEL_ID
+import json
+
+def stream_bedrock_llm(prompt: str, model_id: str = "", system_prompt: Optional[str] = None):
 	"""
 	Stream Claude 3 response from Bedrock using invoke_model_with_response_stream.
 	Yields text chunks as they arrive.
 	"""
 	client = get_bedrock_client()
 	model = model_id if model_id else BEDROCK_MODEL_ID
+	model = model or ""
 	if "claude-3" in model.lower():
 		body_dict = {
 			"messages": [
@@ -33,18 +42,16 @@ def stream_bedrock_llm(prompt: str, model_id: str = "", system_prompt: str = Non
 			if text:
 				yield text
 	else:
+		# fallback to non-streaming call if not Claude 3
 		yield call_bedrock_llm(prompt, model_id, system_prompt)
-# llm.py — Bedrock LLM interface
-from tools import get_bedrock_client
-from config import BEDROCK_MODEL_ID
-import json
 
-def call_bedrock_llm(prompt: str, model_id: str = "", system_prompt: str = None) -> str:
+def call_bedrock_llm(prompt: str, model_id: str = "", system_prompt: Optional[str] = None) -> str:
 	"""
 	Call Bedrock LLM with the given prompt and return the response as a string.
 	"""
 	client = get_bedrock_client()
 	model = model_id if model_id else BEDROCK_MODEL_ID
+	model = model or ""
 	# Claude 3 models require the Messages API format
 	if "claude-3" in model.lower():
 		body_dict = {

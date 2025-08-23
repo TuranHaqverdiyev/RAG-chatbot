@@ -22,8 +22,8 @@ def is_malicious_prompt(prompt: str) -> bool:
 		r"run shell|run command|execute script|os\.system|subprocess|import os|import sys|rm -rf|sudo|su|hack|bypass|exploit|malware|phish|leak|steal|delete|drop|shutdown|format"
 	]
 	return any(re.search(pat, prompt, re.IGNORECASE) for pat in patterns)
-# main.py — FastAPI backend skeleton
 
+# main.py — FastAPI backend skeleton
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
