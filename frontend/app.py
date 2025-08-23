@@ -17,7 +17,7 @@ import requests
 from datetime import datetime
 import re
 import html
-from typing import Tuple, Optional, List, Dict
+from typing import Tuple, Optional
 
 # -------------------------
 # Config & light styling
