@@ -54,8 +54,8 @@ You can access the deployed chatbot here:
 
 ### 1. Clone the Repository
 ```
-git clone <your-repo-url>
-cd <your-repo>
+git clone [<your-repo-url>](https://github.com/TuranHaqverdiyev/RAG-chatbot)
+cd RAG-chatbot
 ```
 
 ### 2. Configure AWS Credentials
@@ -103,3 +103,4 @@ docker compose up --build
 
 ## License
 MIT (or as required by your course)
+
