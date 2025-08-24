@@ -54,7 +54,7 @@ You can access the deployed chatbot here:
 
 ### 1. Clone the Repository
 ```
-git clone https://github.com/TuranHaqverdiyev/RAG-chatbo)
+git clone https://github.com/TuranHaqverdiyev/RAG-chatbot
 cd RAG-chatbot
 ```
 
@@ -103,5 +103,6 @@ docker compose up --build
 
 ## License
 MIT (or as required by your course)
+
 
 
